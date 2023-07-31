@@ -18,6 +18,10 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  containerBlack: {
+    flex: 1,
+    backgroundColor: '#0a0a0a',
+  },
   image: {
     flex: 1,
     justifyContent: 'center',

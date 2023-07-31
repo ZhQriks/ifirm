@@ -9,7 +9,7 @@ export function NavigationBar({
   return (
     <View
       className="flex h-20 flex-row items-center
-    justify-between border border-neutral-200 bg-neutral-950
+    justify-between border-t border-neutral-800 bg-neutral-950
    px-16"
     >
       {state.routes.map((route, index) => {

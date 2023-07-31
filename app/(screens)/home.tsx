@@ -1,17 +1,16 @@
 import { useAuth } from '@clerk/clerk-expo';
-import { Pressable, Text } from 'react-native';
+import { Pressable, SafeAreaView, Text } from 'react-native';
 
-import { Welcome } from '@/templates/Welcome';
+import { styles } from '../(auth)/login';
 
 const Home = () => {
   const { signOut } = useAuth();
   return (
-    <>
-      <Welcome />
+    <SafeAreaView style={styles.containerBlack}>
       <Pressable onPress={() => signOut()}>
-        <Text>Logout</Text>
+        <Text className="text-white">Logout</Text>
       </Pressable>
-    </>
+    </SafeAreaView>
   );
 };
 
