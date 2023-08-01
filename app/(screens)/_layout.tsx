@@ -42,7 +42,7 @@ export default function TabsLayout() {
           tabBarIcon: ({ focused, size }) => (
             <Home
               size={size}
-              color="#10b981"
+              color="#5eead4"
               {...(focused && { variant: 'Bold' })}
             />
           ),
