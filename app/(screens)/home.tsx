@@ -47,7 +47,7 @@ const Home = () => {
           </TouchableOpacity>
         </View>
         <Text className="mx-4 mb-8 mt-12 text-4xl font-medium text-white">
-          Graph
+          Statistics of income Graph
         </Text>
         <Image
           source={{ uri: 'https://i.imgur.com/Abjkyf2.png' }}
