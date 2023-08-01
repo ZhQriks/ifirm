@@ -1,18 +1,9 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { useOAuth } from '@clerk/clerk-expo';
-// eslint-disable-next-line import/no-extraneous-dependencies
+import { useSignIn } from '@clerk/clerk-expo';
+import { Link, Stack } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
-import {
-  Image,
-  ImageBackground,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-
-import { useWarmUpBrowser } from '@/hooks/useWarmUpBrowser';
+import {StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const styles = StyleSheet.create({
   container: {
@@ -105,51 +96,75 @@ export const styles = StyleSheet.create({
     marginRight: 'auto',
   },
 });
-const SignInWithOAuth = () => {
-  useWarmUpBrowser();
-  WebBrowser.maybeCompleteAuthSession();
-  const { startOAuthFlow } = useOAuth({ strategy: 'oauth_google' });
 
-  const handleSignInWithGooglePress = React.useCallback(async () => {
-    try {
-      const { createdSessionId, signIn, signUp, setActive } =
-        await startOAuthFlow();
-      if (createdSessionId) {
-        setActive?.({ session: createdSessionId });
-      } else {
-        throw new Error(
-          'There are unmet requirements, modifiy this else to handle them',
-        );
-      }
-    } catch (err) {
-      console.log(JSON.stringify(err, null, 2));
-      console.log('error signing in', err);
+WebBrowser.maybeCompleteAuthSession();
+const SignInWithOAuth = () => {
+  const { signIn, setActive, isLoaded } = useSignIn();
+
+  const [emailAddress, setEmailAddress] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  const onSignInPress = async () => {
+    if (!isLoaded) {
+      return;
     }
-  }, []);
+
+    try {
+      const completeSignIn = await signIn.create({
+        identifier: emailAddress,
+        password,
+      });
+      // This is an important step,
+      // This indicates the user is signed in
+      await setActive({ session: completeSignIn.createdSessionId });
+    } catch (err: any) {
+      console.log(err);
+    }
+  };
 
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={{ uri: 'https://i.imgur.com/aaUvcUO.png' }}
-        resizeMode="cover"
-        style={styles.image}
-      >
-        <Image
-          source={{ uri: 'https://i.imgur.com/vwpSGQ6.png' }}
-          width={150}
-          height={150}
-          style={styles.logo}
-        />
-        <View style={styles.oauthView}>
+    <SafeAreaView className="">
+      <Stack.Screen options={{ headerShown: false }} />
+      <View className="h-full w-full bg-emerald-100 p-6">
+        <View className=" my-auto rounded-xl border border-neutral-200 bg-white p-6">
+          <View className="mb-8 flex" style={{ gap: 4 }}>
+            <Text className="text-4xl font-semibold text-emerald-950">Войти</Text>
+            <Text className="text-base text-emerald-950">Добро пожаловать</Text>
+          </View>
+          <View className="mb-2">
+            <Text className="mb-1">Почта</Text>
+            <TextInput
+              className="flex flex-row items-center rounded-xl border border-neutral-200 px-4 py-3"
+              autoCapitalize="none"
+              value={emailAddress}
+              placeholder="Email..."
+              onChangeText={(emailAddress) => setEmailAddress(emailAddress)}
+            />
+          </View>
+
+          <View className="mb-8">
+            <Text className="mb-1">Пароль</Text>
+            <TextInput
+              className="flex flex-row items-center rounded-xl border border-neutral-200 px-4 py-3"
+              value={password}
+              placeholder="Password..."
+              secureTextEntry
+              onChangeText={(password) => setPassword(password)}
+            />
+          </View>
           <TouchableOpacity
-            style={{ ...styles.secondaryButton, marginBottom: 20 }}
-            onPress={handleSignInWithGooglePress}
+            onPress={onSignInPress}
+            className="flex flex-row items-center rounded-xl bg-emerald-500 px-4 py-3"
+            style={{ gap: 12 }}
           >
-            <Text style={styles.secondaryButtonText}>Continue with Google</Text>
+            <Text className="mx-auto font-semibold text-white">Sign in</Text>
           </TouchableOpacity>
+          <Link href="/register" className="mt-2">
+            Нет аккаунта?
+          </Link>
         </View>
-      </ImageBackground>
-    </View>
+      </View>
+    </SafeAreaView>
   );
 };
 
