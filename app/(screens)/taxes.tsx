@@ -1,4 +1,4 @@
-import { useRouter } from 'expo-router';
+import {Stack, useRouter} from 'expo-router';
 import { Edit2 } from 'iconsax-react-native';
 import {
   Image,
@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 
 import { styles } from '../(auth)/login';
+import React from "react";
 
 const users = [
   {
@@ -51,6 +52,7 @@ const Taxes = () => {
 
   return (
     <SafeAreaView style={styles.containerBlack}>
+      <Stack.Screen options={{ headerShown: false }} />
       <View className="p-4">
         <Text className="text-4xl font-semibold text-lime-300">Employees</Text>
         <Text className="text-light text-xl text-white mb-4">

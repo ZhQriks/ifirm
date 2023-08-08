@@ -1,3 +1,4 @@
+import { Stack, useRouter } from 'expo-router';
 import { Star1 } from 'iconsax-react-native';
 import {
   Image,
@@ -8,18 +9,21 @@ import {
 } from 'react-native';
 
 import { styles } from '../(auth)/login';
-import {useRouter} from "expo-router";
 
 const Home = () => {
   const router = useRouter();
 
   return (
     <SafeAreaView style={styles.containerBlack}>
+      <Stack.Screen options={{ headerShown: false }} />
       <View className="px-5 py-6">
         <Text className="mb-5 text-5xl font-semibold text-white">
           Dashboard
         </Text>
-        <TouchableOpacity className="flex flex-row items-center justify-between rounded-xl bg-emerald-300 p-6" onPress={() => router.replace('/taxes')}>
+        <TouchableOpacity
+          className="flex flex-row items-center justify-between rounded-xl bg-emerald-300 p-6"
+          onPress={() => router.replace('/taxes')}
+        >
           <View className="rounded-md bg-white p-2">
             <Star1 size="32" className="text-emerald-300" variant="Bold" />
           </View>

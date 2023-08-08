@@ -2,7 +2,13 @@ import { useSignIn } from '@clerk/clerk-expo';
 import { Link, Stack } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
-import {StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const styles = StyleSheet.create({
@@ -128,7 +134,9 @@ const SignInWithOAuth = () => {
       <View className="h-full w-full bg-emerald-100 p-6">
         <View className=" my-auto rounded-xl border border-neutral-200 bg-white p-6">
           <View className="mb-8 flex" style={{ gap: 4 }}>
-            <Text className="text-4xl font-semibold text-emerald-950">Войти</Text>
+            <Text className="text-4xl font-semibold text-emerald-950">
+              Войти
+            </Text>
             <Text className="text-base text-emerald-950">Добро пожаловать</Text>
           </View>
           <View className="mb-2">

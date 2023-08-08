@@ -1,5 +1,5 @@
 import { CloseCircle } from 'iconsax-react-native';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {
   Image,
   SafeAreaView,
@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 
 import { styles } from '../(auth)/login';
+import {Stack} from "expo-router";
 
 const Billing = () => {
   const [toggle, setToggle] = useState(false);
@@ -48,6 +49,7 @@ const Billing = () => {
       style={styles.containerBlack}
       className="relative flex w-full flex-1 items-center px-6 py-10"
     >
+      <Stack.Screen options={{ headerShown: false }} />
       <View className="my-6 flex w-full flex-row justify-between">
         <View className="flex w-full flex-row items-center rounded-lg bg-gray-800 p-3">
           <Image

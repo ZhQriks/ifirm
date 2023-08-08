@@ -11,6 +11,9 @@ const RegisterWithClerk = () => {
 
   const [emailAddress, setEmailAddress] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [firstName, setFirstName] = React.useState('');
+  const [lastName, setLastName] = React.useState('');
+
   const [pendingVerification, setPendingVerification] = React.useState(false);
   const [code, setCode] = React.useState('');
 
@@ -51,7 +54,7 @@ const RegisterWithClerk = () => {
   };
 
   return (
-    <SafeAreaView className="">
+    <SafeAreaView className="flex-1">
       <Stack.Screen options={{ headerShown: false }} />
       <View className="h-full w-full bg-emerald-100 p-6">
         <View className=" my-auto rounded-xl border border-neutral-200 bg-white p-6">
@@ -74,14 +77,36 @@ const RegisterWithClerk = () => {
                   />
                 </View>
 
-                <View className="mb-8">
+                <View className="mb-2">
                   <Text className="mb-1">Пароль</Text>
                   <TextInput
                     className="flex flex-row items-center rounded-xl border border-neutral-200 px-4 py-3"
                     value={password}
                     placeholder="Password..."
                     secureTextEntry
-                    onChangeText={(password) => setPassword(password)}
+                    onChangeText={(pass) => setPassword(pass)}
+                  />
+                </View>
+
+                <View className="mb-2">
+                  <Text className="mb-1">Имя</Text>
+                  <TextInput
+                    className="flex flex-row items-center rounded-xl border border-neutral-200 px-4 py-3"
+                    autoCapitalize="none"
+                    value={firstName}
+                    placeholder="Имя"
+                    onChangeText={(fName) => setFirstName(fName)}
+                  />
+                </View>
+
+                <View className="mb-8">
+                  <Text className="mb-1">Фамилия</Text>
+                  <TextInput
+                    className="flex flex-row items-center rounded-xl border border-neutral-200 px-4 py-3"
+                    autoCapitalize="none"
+                    value={lastName}
+                    placeholder="Фамилия"
+                    onChangeText={(lName) => setLastName(lName)}
                   />
                 </View>
 
@@ -103,17 +128,18 @@ const RegisterWithClerk = () => {
               <View>
                 <View>
                   <TextInput
+                    className="flex flex-row items-center rounded-xl border border-neutral-200 px-4 py-3"
                     value={code}
                     placeholder="Code..."
-                    onChangeText={(code) => setCode(code)}
+                    onChangeText={(c) => setCode(c)}
                   />
                 </View>
                 <TouchableOpacity
-                  className="flex flex-row items-center rounded-xl border border-neutral-200 px-4 py-3"
+                  className="mt-4 flex flex-row items-center rounded-xl bg-emerald-500 px-4 py-3"
                   style={{ gap: 12 }}
                   onPress={onPressVerify}
                 >
-                  <Text>Verify Email</Text>
+                  <Text className="text-white mx-auto">Verify Email</Text>
                 </TouchableOpacity>
               </View>
             )}

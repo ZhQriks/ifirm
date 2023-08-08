@@ -12,22 +12,35 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.reactnativeboilerplate"
+      "bundleIdentifier": "com.ifirm.ifirm"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anonymous.reactnativeboilerplate"
+      "package": "com.ifirm.ifirm"
     },
     "web": {
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
-    "plugins": ["@config-plugins/detox", "expo-router"]
+    "plugins": [
+      "@config-plugins/detox",
+      "expo-router"
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "4035b1d3-f700-4080-8e08-b5a0e78649a9"
+      }
+    }
   }
 }
