@@ -1,5 +1,6 @@
+import { Stack } from 'expo-router';
 import { CloseCircle } from 'iconsax-react-native';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   Image,
   SafeAreaView,
@@ -11,7 +12,6 @@ import {
 } from 'react-native';
 
 import { styles } from '../(auth)/login';
-import {Stack} from "expo-router";
 
 const Billing = () => {
   const [toggle, setToggle] = useState(false);
@@ -50,23 +50,23 @@ const Billing = () => {
       className="relative flex w-full flex-1 items-center px-6 py-10"
     >
       <Stack.Screen options={{ headerShown: false }} />
-      <View className="my-6 flex w-full flex-row justify-between">
-        <View className="flex w-full flex-row items-center rounded-lg bg-gray-800 p-3">
-          <Image
-            source={{
-              uri: 'https://pk.i-spo.ru/photo/profession/23.jpg?t=1593671377',
-            }}
-            className="mr-3 h-10 w-10 rounded-full"
-          />
-          <View className="flex gap-y-1">
-            <Text className="text-white"> Vacosso Oltaro </Text>
-
-            <Text className="text-xs text-white"> Garson </Text>
-          </View>
-        </View>
-      </View>
 
       <ScrollView className="mx-auto overflow-visible">
+        <View className="mx-auto my-6 flex w-full flex-row justify-between">
+          <View className="flex w-full flex-row items-center rounded-lg bg-gray-800 p-3">
+            <Image
+              source={{
+                uri: 'https://i.imgur.com/iTT5w5f.jpg',
+              }}
+              className="mr-3 h-10 w-10 rounded-full"
+            />
+            <View className="flex gap-y-1">
+              <Text className="text-white"> Madina Amangeldievna </Text>
+
+              <Text className="text-xs text-white">Employee</Text>
+            </View>
+          </View>
+        </View>
         <View className="flex w-full flex-row justify-between">
           <View className="flex w-[47%] items-center justify-center rounded-lg bg-gray-800 p-3">
             <View className="mb-2 flex flex-row">
@@ -150,9 +150,7 @@ const Billing = () => {
 
               <View className="flex flex-col items-center gap-y-4 py-10">
                 <View>
-                  <Text className="mb-2 text-lg text-white">
-                    Gross Salary
-                  </Text>
+                  <Text className="mb-2 text-lg text-white">Gross Salary</Text>
                   <TextInput
                     className="h-[40px] min-w-[240px] rounded-xl border border-emerald-200 p-2 text-white"
                     value={salaryValue}
@@ -189,9 +187,7 @@ const Billing = () => {
                 </View>
 
                 <View>
-                  <Text className="mb-2 text-lg text-white">
-                    Inflation (%)
-                  </Text>
+                  <Text className="mb-2 text-lg text-white">Inflation (%)</Text>
                   <TextInput
                     className="h-[40px] min-w-[240px] rounded-xl border border-emerald-200 p-2 text-white"
                     value={inflationValue}
@@ -204,9 +200,9 @@ const Billing = () => {
 
                 <TouchableOpacity
                   onPress={handleSave}
-                  className="rounded-xl bg-emerald-900 p-3 min-w-[240px]"
+                  className="min-w-[240px] rounded-xl bg-emerald-900 p-3"
                 >
-                  <Text className=" font-bold text-white mx-auto">Save</Text>
+                  <Text className=" mx-auto font-bold text-white">Save</Text>
                 </TouchableOpacity>
               </View>
             </View>

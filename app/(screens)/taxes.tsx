@@ -61,7 +61,7 @@ const Taxes = () => {
       </View>
       <ScrollView className="overflow-hidden">
         {users.map((user) => (
-          <Pressable className="mb-5 flex flex-row justify-between">
+          <Pressable className="mb-5 flex flex-row justify-between" key={user.name}>
             <TouchableOpacity
               className="flex w-[80%] flex-row items-center rounded-lg bg-gray-800 p-4"
               onPress={() => router.replace('/billing')}
